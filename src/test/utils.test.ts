@@ -11,5 +11,12 @@ describe('Utils test suite', () => {
         expect(parsedUrl.href).toBe('http://localhost:5601/');
         expect(parsedUrl.port).toBe('5601');
         expect(parsedUrl.protocol).toBe('http:');
+        expect(parsedUrl.query).toEqual({});;
+    });
+
+    test('parse URL with Query', () => {
+        const expectedQuery = { 'user': 'user', 'password': 'test'};
+        const parsedUrl = Utils.parseUrl('http://localhost:5601?user=user&password=test');
+        expect(parsedUrl.query).toEqual(expectedQuery);;
     })
 });
