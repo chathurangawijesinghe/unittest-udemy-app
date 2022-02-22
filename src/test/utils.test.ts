@@ -1,6 +1,22 @@
 import { Utils } from "../app/utils";
 
 describe('Utils test suite', () => {
+    beforeAll(() => {
+        console.log('before all');
+    });
+
+    beforeEach(() => {
+        console.log('before each');
+    });
+
+    afterAll(() => {
+        console.log('after all');
+    });
+
+    afterEach(() => {
+        console.log('after each');
+    });
+
     test('first test', () => {
         const result = Utils.toUpperCase('abc');
         expect(result).toBe('ABC');;
@@ -15,8 +31,10 @@ describe('Utils test suite', () => {
     });
 
     test('parse URL with Query', () => {
-        const expectedQuery = { 'user': 'user', 'password': 'test'};
+        const expectedQuery = { 'user': 'user', 'password': 'test' };
         const parsedUrl = Utils.parseUrl('http://localhost:5601?user=user&password=test');
         expect(parsedUrl.query).toEqual(expectedQuery);;
-    })
+    });
+
+    test.todo('invalid url');
 });
